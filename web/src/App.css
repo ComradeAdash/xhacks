@@ -11,6 +11,13 @@
   width: 100%;
 }
 
+.carousel-cta {
+  width: 100%;
+  max-width: 420px;
+  margin: 24px auto 0;
+  display: block;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

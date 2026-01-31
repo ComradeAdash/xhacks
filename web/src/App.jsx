@@ -10,6 +10,9 @@ function App() {
   return (
     <div className="carousel-wrapper">
       <Carousel />
+      <button className="btn btn-outline btn-primary carousel-cta">
+        Message
+      </button>
     </div>
   )
 }

@@ -85,7 +85,9 @@ export function CardsCarousel() {
       previousControlProps={{ 'aria-label': 'Previous slide' }}
     >
       {slides}
+      <button className="btn btn-wide">Wide</button>
     </Carousel>
+    
   );
 }
 
