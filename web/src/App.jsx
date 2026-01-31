@@ -1,14 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Carousel from './Carousel'
+import UploadButton from './UploadButton'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="carousel-wrapper">
+      <UploadButton onSubmit={(post) => console.log('Posted:', post)} />
       <Carousel />
       <button className="btn btn-outline btn-primary carousel-cta">
         Message
