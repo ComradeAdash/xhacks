@@ -1,9 +1,9 @@
 :root {
   --rail-w: 72px; /* skinny */
-  --rail-bg: rgba(255, 255, 255, 0.9);
-  --rail-border: rgba(148, 163, 184, 0.3);
-  --rail-ink: #0f172a;
-  --rail-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  --rail-bg: rgba(250, 244, 232, 0.92);
+  --rail-border: rgba(122, 91, 62, 0.25);
+  --rail-ink: #3a2a1f;
+  --rail-shadow: 0 12px 24px rgba(58, 42, 31, 0.12);
 }
 
 /* left rail container */
@@ -14,16 +14,44 @@
   transform: translateY(-50%);
   width: var(--rail-w);
   height: auto;
-  background: var(--rail-bg);
-  border: 1px solid var(--rail-border);
+  background: #f3e4c7;
+  border: 1px solid rgba(122, 91, 62, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 40;
-  box-shadow: var(--rail-shadow);
+  box-shadow: 0 10px 24px rgba(58, 42, 31, 0.18);
   backdrop-filter: blur(10px);
-  border-radius: 22px;
+  border-radius: 26px;
   padding: 10px 0;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0)),
+    radial-gradient(circle at 20% 20%, rgba(122, 91, 62, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(122, 91, 62, 0.1), transparent 45%);
+  overflow: hidden;
+}
+
+.rail::before,
+.rail::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 46px;
+  height: 22px;
+  background: #efe0c3;
+  border: 1px solid rgba(122, 91, 62, 0.35);
+  border-radius: 60px 60px 40px 40px;
+  transform: translateX(-50%);
+  box-shadow: 0 6px 10px rgba(58, 42, 31, 0.12);
+}
+
+.rail::before {
+  top: -10px;
+}
+
+.rail::after {
+  bottom: -10px;
+  transform: translateX(-50%) rotate(180deg);
 }
 
 /* stack icons */
@@ -61,9 +89,9 @@
 }
 
 .rail-btn.active {
-  background: rgba(185, 28, 28, 0.12);
-  border-color: rgba(185, 28, 28, 0.3);
-  box-shadow: 0 6px 16px rgba(185, 28, 28, 0.18);
+  background: rgba(122, 45, 45, 0.14);
+  border-color: rgba(122, 45, 45, 0.28);
+  box-shadow: 0 6px 16px rgba(122, 45, 45, 0.2);
 }
 
 .rail-ico {
