@@ -1,5 +1,5 @@
 import { Carousel } from '@mantine/carousel';
-import { Button, Paper, Text, Title, useMantineTheme } from '@mantine/core';
+import { Paper, Text, Title, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import classes from './CarouselCard.module.css';
 
@@ -12,12 +12,16 @@ const categoryLabels = {
 }
 
 function Card({ image, title, category }) {
+  const cardStyle = image
+    ? { backgroundImage: `url(${image})` }
+    : { background: 'linear-gradient(135deg, #1f2937, #111827)' }
+
   return (
     <Paper
       shadow="md"
       p="xl"
       radius="md"
-      style={{ backgroundImage: `url(${image})` }}
+      style={cardStyle}
       className={classes.card}
     >
       <div>
@@ -28,57 +32,24 @@ function Card({ image, title, category }) {
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
     </Paper>
   );
 }
-
-export const defaultCarouselData = [
-  {
-    image:
-      'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=400&q=80',
-    title: 'Best forests to visit in North America',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1559494007-9f5847c49d94?auto=format&fit=crop&w=400&q=80',
-    title: 'Hawaii beaches review: better than you think',
-    category: 'beach',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=400&q=80',
-    title: 'Best places to visit this winter',
-    category: 'tourism',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1582721478779-0ae163c05a60?auto=format&fit=crop&w=400&q=80',
-    title: 'Active volcanos reviews: travel at your own risk',
-    category: 'nature',
-  },
-];
 
 export function CardsCarousel({ items }) {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
-  const carouselItems = items && items.length > 0 ? items : defaultCarouselData;
+  const carouselItems = items && items.length > 0
+    ? items
+    : [
+        {
+          id: 'placeholder',
+          image: '',
+          title: 'No posts yet',
+          category: 'Be the first to post!',
+        },
+      ];
 
   const slides = carouselItems.map((item, index) => (
     <Carousel.Slide key={item.id ?? `${item.title}-${index}`}>
@@ -96,7 +67,6 @@ export function CardsCarousel({ items }) {
     >
       {slides}
     </Carousel>
-    
   );
 }
 

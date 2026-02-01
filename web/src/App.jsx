@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { addDoc, collection, limit, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore'
 import './App.css'
-import Carousel, { defaultCarouselData } from './Carousel'
+import Carousel from './Carousel'
 import Navigation from './Navigation'
 import UploadButton from './UploadButton'
 import { db } from './firebase'
@@ -62,7 +62,7 @@ function App() {
     }
   }
 
-  const carouselItems = [...posts, ...defaultCarouselData]
+  const carouselItems = posts
 
   return (
     <>
