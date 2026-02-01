@@ -1,5 +1,3 @@
-
-
 import {
   Anchor,
   Button,
@@ -63,15 +61,33 @@ export function AuthenticationForm(props) {
           displayName: values.name,
         })
 
-        // Send verification email
-        await sendEmailVerification(userCred.user)
+        // ⭐ FIX #1 — Send verification email to your custom verify page
+        await sendEmailVerification(userCred.user, {
+          url: "http://localhost:5173/verify",
+          handleCodeInApp: true,
+        })
 
         alert('Account created! Check your email to verify your account.')
-        window.location.href = '/'
+
+        // ⭐ FIX #2 — Redirect to login page, not signup
+        window.location.href = '/auth'
+
       } else {
-        // Login
-        await signInWithEmailAndPassword(auth, values.email, values.password)
-        window.location.href = '/'
+        // ⭐ FIX #3 — Login + reload user + check verification
+        const userCred = await signInWithEmailAndPassword(
+          auth,
+          values.email,
+          values.password
+        )
+
+        await userCred.user.reload()
+
+        if (!userCred.user.emailVerified) {
+          alert("Please verify your email before logging in.")
+          return
+        }
+
+        window.location.href = '/home'
       }
     } catch (err) {
       alert(err.message)
