@@ -158,43 +158,38 @@ export default function Settings() {
       </Title>
 
       <Card withBorder radius="md" padding="lg" mb="lg">
-        <Title order={4} mb="xs">
-          Current profile
-        </Title>
-        <Stack gap="sm">
-          <Box style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            {pfp ? (
-              <Image
-                src={pfp}
-                alt="Profile"
-                w={56}
-                h={56}
-                radius="md"
-                fit="cover"
-              />
-            ) : (
-              <Box
-                w={56}
-                h={56}
-                style={{
-                  borderRadius: 8,
-                  background: 'var(--mantine-color-gray-2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 24,
-                }}
-              >
-                👤
-              </Box>
-            )}
-            <div>
-              <Text fw={600}>{username || 'No username set'}</Text>
-              <Text size="sm" c="dimmed">
-                {user.email}
-              </Text>
-            </div>
-          </Box>
+        <Stack gap="sm" align="center" style={{ textAlign: 'center' }}>
+          {pfp ? (
+            <Image
+              src={pfp}
+              alt="Profile"
+              w={56}
+              h={56}
+              radius="md"
+              fit="cover"
+            />
+          ) : (
+            <Box
+              w={56}
+              h={56}
+              style={{
+                borderRadius: 8,
+                background: 'var(--mantine-color-gray-2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 24,
+              }}
+            >
+              👤
+            </Box>
+          )}
+          <div>
+            <Text fw={600}>{username || 'No username set'}</Text>
+            <Text size="sm" c="dimmed">
+              {user.email}
+            </Text>
+          </div>
         </Stack>
       </Card>
 
