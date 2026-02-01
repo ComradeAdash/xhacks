@@ -48,15 +48,25 @@ export default function UploadButton({ onSubmit, onClick }) {
 
   return (
     <div style={{ margin: '12px 0', display: 'inline-block', color: '#7a2d2d' }}>
-      <Button
-        variant="filled"
-        size="md"
-        radius="md"
-        onClick={() => setIsOpen(true)}
-        style={{ backgroundColor: '#7a2d2d', color: '#fff' }}
-      >
-        Upload / Post
-      </Button>
+        <Button
+          variant="filled"
+          size="md"
+          radius="md"
+          onClick={() => setIsOpen(true)}
+          style={{
+            '--button-bg': '#7a2d2d',
+            '--button-color': '#fff',
+
+            // hover (light grey instead of white)
+            '--button-hover': '#f1f3f5',        // try also: '#e9ecef'
+            '--button-hover-color': '#7a2d2d',
+
+            // optional border
+            '--button-bd': '1px solid #7a2d2d',
+          }}
+        >
+          Upload / Post
+        </Button>
 
       <Modal
         opened={isOpen}
