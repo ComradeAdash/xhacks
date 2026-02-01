@@ -68,3 +68,20 @@
     display: none;
   }
 }
+
+/* pfp display above the home icon */
+.rail-pfp {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+.rail-pfp img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
