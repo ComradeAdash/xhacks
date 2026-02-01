@@ -11,6 +11,7 @@ import {
 import './App.css'
 import Carousel from './Carousel'
 import Navigation from './Navigation'
+import AppHeader from './AppHeader'
 import UploadButton from './UploadButton'
 import Chat from './chat'
 import { db } from './firebase'
@@ -85,6 +86,7 @@ function App() {
 
       <div className="page-content">
         <div className="carousel-wrapper">
+          <AppHeader />
           {postsError && (
             <p style={{ marginBottom: '12px', color: '#e03131' }}>
               Failed to load posts (error: {postsError}).
