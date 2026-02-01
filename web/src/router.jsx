@@ -1,9 +1,9 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthenticationForm } from "./AuthenticationForm";
 import VerifyEmail from "./Verifyemail";
 import Profile from "./Profile";
-
+import Settings from "./settings";
 import ProtectedRoute from "./ProtectedRoute";
 import { AuthProvider } from "./AuthContext";
 
@@ -43,6 +43,17 @@ export const router = createBrowserRouter([
       <AuthProvider>
         <ProtectedRoute>
           <Profile />
+        </ProtectedRoute>
+      </AuthProvider>
+    ),
+  },
+
+  {
+    path: "/settings",
+    element: (
+      <AuthProvider>
+        <ProtectedRoute>
+          <Settings />
         </ProtectedRoute>
       </AuthProvider>
     ),

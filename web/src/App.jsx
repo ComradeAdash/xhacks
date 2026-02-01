@@ -102,11 +102,23 @@ function App() {
 
   const carouselItems = posts
 
+  const handleNav = (next) => {
+    if (next === 'home') {
+      setOtherUser(null)
+      setPendingUser(null)
+      setPage('home')
+    }
+    if (next === 'inbox') {
+      setOtherUser(null)
+      setPage('inbox')
+    }
+  }
+
   // ✅ Inbox page (choose which chat to open)
   if (page === 'inbox') {
     return (
       <>
-        <Navigation />
+        <Navigation onNavigate={handleNav} />
         <Inbox
           onBack={() => {
             setPendingUser(null)
@@ -127,7 +139,7 @@ function App() {
   if (page === 'chat' && otherUser) {
     return (
       <>
-        <Navigation />
+        <Navigation onNavigate={handleNav} />
         <Chat onBack={() => setPage('inbox')} otherUser={otherUser} />
       </>
     )
@@ -135,7 +147,7 @@ function App() {
 
   return (
     <>
-      <Navigation />
+      <Navigation onNavigate={handleNav} />
 
       <div className="page-content">
         <AppHeader />

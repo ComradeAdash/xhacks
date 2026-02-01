@@ -141,7 +141,7 @@ export default function Settings() {
   }
 
   function handleLogout() {
-    signOut(auth).then(() => navigate('/login'))
+    signOut(auth).then(() => navigate('/'))
   }
 
   function handleSaveProfileDetails() {
@@ -169,7 +169,7 @@ export default function Settings() {
     return (
       <Box p="xl">
         <Text c="dimmed">You must be logged in to view settings.</Text>
-        <Button variant="light" mt="md" onClick={() => navigate('/login')}>
+        <Button variant="light" mt="md" onClick={() => navigate('/')}>
           Go to Login
         </Button>
       </Box>
@@ -178,7 +178,7 @@ export default function Settings() {
 
   return (
     <Box p="xl" maw={480} mx="auto">
-      <Button variant="subtle" size="sm" mb="md" color="#7a2d2d" onClick={() => navigate('/')}>
+      <Button variant="subtle" size="sm" mb="md" color="#7a2d2d" onClick={() => navigate('/app')}>
         ← Back to home
       </Button>
       <Title order={2} mb="lg">

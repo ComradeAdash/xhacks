@@ -5,7 +5,7 @@ import { FiHome, FiMessageSquare, FiUser, FiSettings, FiLogOut } from 'react-ico
 import { auth } from './firebase'
 import './Navigation.css'
 
-export default function Navigation() {
+export default function Navigation({ onNavigate }) {
   const navigate = useNavigate()
   const [active, setActive] = useState('Home')
   const [pfp, setPfp] = useState('')
@@ -26,11 +26,21 @@ export default function Navigation() {
     setActive(item.label)
 
     if (item.label === 'Home') {
-      navigate('/home')
+      if (typeof onNavigate === 'function') {
+        onNavigate('home')
+      } else {
+        navigate('/app')
+      }
+      return
     }
 
     if (item.label === 'Chat') {
-      navigate('/chat')
+      if (typeof onNavigate === 'function') {
+        onNavigate('inbox')
+      } else {
+        navigate('/app')
+      }
+      return
     }
 
     if (item.label === 'Account') {
