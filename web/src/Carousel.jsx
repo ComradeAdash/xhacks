@@ -3,68 +3,33 @@ import { Button, Paper, Text, Title, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import classes from './CarouselCard.module.css';
 
-function Card({ image, title, category }) {
+function Card({ image, title, category, description }) {
+  const hasImage = Boolean(image);
+  const style = hasImage ? { backgroundImage: `url(${image})` } : { backgroundColor: 'var(--mantine-color-gray-0)' };
+
   return (
-    <Paper
-      shadow="md"
-      p="xl"
-      radius="md"
-      style={{ backgroundImage: `url(${image})` }}
-      className={classes.card}
-    >
-      <div>
-        <Text className={classes.category} size="xs">
-          {category}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
+    <Paper shadow="md" p="xl" radius="md" style={style} className={classes.card}>
+      {!hasImage ? (
+        <div className={classes.placeholder}>
+          <Title order={4}>{title ?? 'No posts yet'}</Title>
+          <Text size="sm" color="dimmed">No image yet — upload a photo to make this post stand out</Text>
+        </div>
+      ) : (
+        <div className={classes.overlay}>
+          <Text className={classes.category} size="xs">{category}</Text>
+          <Title order={3} className={classes.title}>{title}</Title>
+          {description && (
+            <Text className={classes.description} mt="sm" lineClamp={4}>
+              {description}
+            </Text>
+          )}
+        </div>
+      )}
     </Paper>
   );
 }
 
-export const defaultCarouselData = [
-  {
-    image:
-      'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=400&q=80',
-    title: 'Best forests to visit in North America',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1559494007-9f5847c49d94?auto=format&fit=crop&w=400&q=80',
-    title: 'Hawaii beaches review: better than you think',
-    category: 'beach',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1608481337062-4093bf3ed404?auto=format&fit=crop&w=400&q=80',
-    title: 'Mountains at night: 12 best locations to enjoy the view',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?auto=format&fit=crop&w=400&q=80',
-    title: 'Aurora in Norway: when to visit for best experience',
-    category: 'nature',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=400&q=80',
-    title: 'Best places to visit this winter',
-    category: 'tourism',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1582721478779-0ae163c05a60?auto=format&fit=crop&w=400&q=80',
-    title: 'Active volcanos reviews: travel at your own risk',
-    category: 'nature',
-  },
-];
+export const defaultCarouselData = [];
 
 export function CardsCarousel({ items }) {
   const theme = useMantineTheme();
@@ -72,7 +37,7 @@ export function CardsCarousel({ items }) {
 
   const carouselItems = items && items.length > 0 ? items : defaultCarouselData;
 
-  const slides = carouselItems.map((item, index) => (
+  const slides = (carouselItems.length > 0 ? carouselItems : [{ id: 'placeholder', title: 'No posts yet', category: '', image: '' }]).map((item, index) => (
     <Carousel.Slide key={item.id ?? `${item.title}-${index}`}>
       <Card {...item} />
     </Carousel.Slide>
