@@ -3,6 +3,14 @@ import { Button, Paper, Text, Title, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import classes from './CarouselCard.module.css';
 
+const categoryLabels = {
+  'Maggie Benston Center': 'MBC',
+  'Student Union Building (SUB)': 'Student Union Building',
+  'West Mall Center': 'West Mall Center',
+  'Reacreational Activity': 'Recreation',
+  Library: 'Library',
+}
+
 function Card({ image, title, category }) {
   return (
     <Paper
@@ -14,7 +22,7 @@ function Card({ image, title, category }) {
     >
       <div>
         <Text className={classes.category} size="xs">
-          {category}
+          {categoryLabels[category] ?? category}
         </Text>
         <Title order={3} className={classes.title}>
           {title}
