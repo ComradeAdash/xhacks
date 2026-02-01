@@ -6,6 +6,20 @@
   align-items: flex-start;
   background-size: cover;
   background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .title {
@@ -18,8 +32,15 @@
 }
 
 .category {
-  color: var(--mantine-color-white);
-  opacity: 0.75;
+  color: var(--mantine-color-green-0);
+  background: rgba(34, 197, 94, 0.7);
+  border: 1px solid rgba(34, 197, 94, 0.9);
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
 }
