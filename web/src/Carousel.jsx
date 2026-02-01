@@ -81,8 +81,19 @@ export default function CardsCarousel({ items, onMessage }) {
         ]
 
   const slides = carouselItems.map((item, index) => {
-    const ownerUid = item.owner?.uid
-    const ownerName = item.owner?.displayName
+    // Support multiple shapes: owner.uid, owner (string), userId, ownerId (legacy)
+    const ownerUid =
+      item.owner?.uid ??
+      (typeof item.owner === 'string' ? item.owner : null) ??
+      item.userId ??
+      item.ownerId ??
+      null
+    const ownerName =
+      item.owner?.displayName ??
+      item.owner?.name ??
+      item.displayName ??
+      'User'
+    const ownerPhoto = item.owner?.photoURL ?? item.owner?.photo ?? ''
 
     const canMessage =
       typeof onMessage === 'function' &&
@@ -97,7 +108,12 @@ export default function CardsCarousel({ items, onMessage }) {
           ownerMeta={item.owner}
           onMessageClick={
             canMessage
-              ? () => onMessage({ uid: ownerUid, displayName: ownerName })
+              ? () =>
+                  onMessage({
+                    uid: ownerUid,
+                    displayName: ownerName,
+                    photoURL: ownerPhoto,
+                  })
               : undefined
           }
         />
