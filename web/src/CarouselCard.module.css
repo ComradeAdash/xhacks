@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   height: 342px;
   display: flex;
   flex-direction: column;
@@ -6,6 +7,7 @@
   align-items: flex-start;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 
 .title {
@@ -15,6 +17,24 @@
   line-height: 1.2;
   font-size: 24px;
   margin-top: var(--mantine-spacing-xs);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--mantine-spacing-sm);
+  padding: var(--mantine-spacing-md);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
+}
+
+.description {
+  color: var(--mantine-color-white);
+  opacity: 0.9;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .category {
