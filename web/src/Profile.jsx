@@ -5,12 +5,8 @@ import pfp1 from './assets/pfp_1.png';
 import pfp2 from './assets/pfp_2.png';
 import pfp3 from './assets/pfp_3.png';
 import pfp4 from './assets/pfp_4.png';
-import pfp5 from './assets/pfp_5.png';
-import pfp6 from './assets/pfp_6.png';
-import pfp7 from './assets/pfp_7.png';
-import pfp8 from './assets/pfp_8.png';
 
-const PFPS = [pfp1, pfp2, pfp3, pfp4, pfp5, pfp6, pfp7, pfp8];
+const PFPS = [pfp1, pfp2, pfp3, pfp4];
 
 export default function Profile() {
   const [selected, setSelected] = useState(() => localStorage.getItem('selectedPfp') || '');
