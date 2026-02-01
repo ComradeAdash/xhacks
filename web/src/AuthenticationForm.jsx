@@ -65,8 +65,8 @@ export function AuthenticationForm(props) {
 
         alert('Account created! Check your email to verify your account.')
 
-        // ⭐ Redirect signup → login page
-        window.location.href = '/'
+        // ⭐ Replace so back button cannot return to signup
+        window.location.replace('/')
 
       } else {
         const userCred = await signInWithEmailAndPassword(
@@ -82,8 +82,8 @@ export function AuthenticationForm(props) {
           return
         }
 
-        // ⭐ Redirect login → /app
-        window.location.href = '/app'
+        // ⭐ Replace so back button cannot return to login
+        window.location.replace('/app')
       }
     } catch (err) {
       alert(err.message)

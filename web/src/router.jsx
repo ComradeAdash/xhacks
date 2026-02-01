@@ -1,8 +1,7 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthenticationForm } from "./AuthenticationForm";
-import VerifyEmail from "./Verifyemail";
-import Profile from "./Profile";
+import VerifyEmail from "./VerifyEmail";
 
 import ProtectedRoute from "./ProtectedRoute";
 import { AuthProvider } from "./AuthContext";
@@ -37,14 +36,5 @@ export const router = createBrowserRouter([
     ),
   },
 
-  {
-    path: "/profile",
-    element: (
-      <AuthProvider>
-        <ProtectedRoute>
-          <Profile />
-        </ProtectedRoute>
-      </AuthProvider>
-    ),
-  },
+  
 ]);
