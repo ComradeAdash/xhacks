@@ -1,23 +1,29 @@
 :root {
-  --rail-w: 64px; /* skinny */
-  --rail-bg: #ffffff;
-  --rail-border: #ececec;
-  --rail-ink: #111111;
+  --rail-w: 72px; /* skinny */
+  --rail-bg: rgba(255, 255, 255, 0.9);
+  --rail-border: rgba(148, 163, 184, 0.3);
+  --rail-ink: #0f172a;
+  --rail-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
 /* left rail container */
 .rail {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
   width: var(--rail-w);
-  height: 100vh;
+  height: auto;
   background: var(--rail-bg);
-  border-right: 1px solid var(--rail-border);
+  border: 1px solid var(--rail-border);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 40;
+  box-shadow: var(--rail-shadow);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  padding: 10px 0;
 }
 
 /* stack icons */
@@ -27,7 +33,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .rail-li {
@@ -36,26 +42,28 @@
 }
 
 .rail-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
   border: 1px solid transparent;
-  background: transparent;
+  background: rgba(15, 23, 42, 0.02);
   cursor: pointer;
   display: grid;
   place-items: center;
   color: var(--rail-ink);
-  transition: background 0.15s ease, transform 0.08s ease, border-color 0.15s ease;
+  transition: background 0.2s ease, transform 0.12s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .rail-btn:hover {
-  background: rgba(0, 0, 0, 0.05);
-  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
 }
 
 .rail-btn.active {
-  background: rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(185, 28, 28, 0.12);
+  border-color: rgba(185, 28, 28, 0.3);
+  box-shadow: 0 6px 16px rgba(185, 28, 28, 0.18);
 }
 
 .rail-ico {
@@ -71,17 +79,20 @@
 
 /* pfp display above the home icon */
 .rail-pfp {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 20px;
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: transparent;
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
 }
 
 .rail-pfp img {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
   object-fit: cover;
+  border-radius: 16px;
 }

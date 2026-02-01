@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FiHome, FiMessageSquare, FiUser, FiSettings, FiLogOut } from 'react-icons/fi'
 import './Navigation.css'
 
 export default function Navigation() {
   const items = [
-    { icon: '🏠', label: 'Home' },
-    { icon: '💬', label: 'Chat' },
-    { icon: '👤', label: 'Account' },
-    { icon: '⚙️', label: 'Settings' },
-    { icon: '🚪', label: 'Logout' },
+    { icon: FiHome, label: 'Home' },
+    { icon: FiMessageSquare, label: 'Chat' },
+    { icon: FiUser, label: 'Account' },
+    { icon: FiSettings, label: 'Settings' },
+    { icon: FiLogOut, label: 'Logout' },
   ]
 
   const [active, setActive] = useState('Home')
@@ -33,24 +34,25 @@ export default function Navigation() {
         {/* pfp above home */}
         <li className="rail-li">
           <div className="rail-pfp">
-            {pfp ? <img src={pfp} alt="pfp" /> : <span className="rail-ico">👤</span>}
+            {pfp ? <img src={pfp} alt="pfp" /> : <FiUser className="rail-ico" aria-hidden="true" />}
           </div>
         </li>
 
-        {items.map((item) => (
-          <li key={item.label} className="rail-li">
-            <button
-              className={`rail-btn ${active === item.label ? 'active' : ''}`}
-              onClick={() => handleClick(item)}
-              aria-label={item.label}
-              title={item.label}
-            >
-              <span className="rail-ico" aria-hidden="true">
-                {item.icon}
-              </span>
-            </button>
-          </li>
-        ))}
+        {items.map((item) => {
+          const Icon = item.icon
+          return (
+            <li key={item.label} className="rail-li">
+              <button
+                className={`rail-btn ${active === item.label ? 'active' : ''}`}
+                onClick={() => handleClick(item)}
+                aria-label={item.label}
+                title={item.label}
+              >
+                <Icon className="rail-ico" aria-hidden="true" />
+              </button>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )
