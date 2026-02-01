@@ -48,8 +48,14 @@ export default function UploadButton({ onSubmit, onClick }) {
 
   return (
     <div style={{ margin: '12px 0', display: 'inline-block' }}>
-      <Button variant="filled" size="md" radius="md" onClick={() => setIsOpen(true)}>
-        Upload / Post
+      <Button
+        variant="filled"
+        size="md"
+        radius="md"
+        style={{ backgroundColor: '#7a4b2d', color: '#fff', minWidth: 180 }}
+        onClick={() => setIsOpen(true)}
+      >
+        Post
       </Button>
 
       <Modal
@@ -89,7 +95,11 @@ export default function UploadButton({ onSubmit, onClick }) {
               autosize
               radius="md"
             />
-            <Button type="submit" radius="md">
+            <Button
+              type="submit"
+              radius="md"
+              style={{ backgroundColor: '#7a2d2d', color: '#fff' }}
+            >
               Submit
             </Button>
           </Stack>

@@ -13,7 +13,7 @@ const categoryLabels = {
 }
 
 // ⭐ Your Card component MUST be here
-function Card({ image, title, category, ownerName, onMessageClick }) {
+function Card({ image, title, category, ownerName, ownerMeta, onMessageClick }) {
   const cardStyle = image
     ? { backgroundImage: `url(${image})` }
     : { background: 'linear-gradient(135deg, #1f2937, #111827)' }
@@ -26,7 +26,7 @@ function Card({ image, title, category, ownerName, onMessageClick }) {
       style={cardStyle}
       className={classes.card}
     >
-      <div>
+      <div className={classes.cardContent}>
         <Text className={classes.category} size="xs">
           {categoryLabels[category] ?? category}
         </Text>
@@ -40,10 +40,21 @@ function Card({ image, title, category, ownerName, onMessageClick }) {
             Posted by {ownerName}
           </Text>
         )}
+        {ownerMeta && (ownerMeta.major || ownerMeta.year || ownerMeta.gender) && (
+          <Text size="xs" mt={6} style={{ color: 'rgba(255,255,255,0.75)' }}>
+            {[ownerMeta.major, ownerMeta.year, ownerMeta.gender]
+              .filter(Boolean)
+              .join(' • ')}
+          </Text>
+        )}
       </div>
 
       {onMessageClick && (
-        <Button variant="filled" color="blue" onClick={onMessageClick}>
+        <Button
+          variant="filled"
+          style={{ backgroundColor: '#7a2d2d', color: '#fff' }}
+          onClick={onMessageClick}
+        >
           Message
         </Button>
       )}
@@ -83,6 +94,7 @@ export default function CardsCarousel({ items, onMessage }) {
         <Card
           {...item}
           ownerName={ownerName}
+          ownerMeta={item.owner}
           onMessageClick={
             canMessage
               ? () => onMessage({ uid: ownerUid, displayName: ownerName })
