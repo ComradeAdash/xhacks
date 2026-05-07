@@ -4,7 +4,7 @@ SFU has a reputation for being a lonely commuter school. We want to change the n
 
 With SFU Connect users can scroll through a live feed where they can either post meetups or interact with posts of meetups they want to attend via a live group chat. Our main focus is fostering in person interactions between students.
 
-This project was built for the Software Systems Student Societies Flagship Hackathon, [XHacks 2026](https://systemshacks-2026-xhacks.devpost.com/?_gl=1*kwn7ro*_gcl_au*OTMyODIxMjI0LjE3NzgxOTQ2NTE.*_ga*MTg4MjAyMTY4NS4xNzc4MTk0NjUx*_ga_0YHJK3Y10M*czE3NzgxOTQ2NTEkbzEkZzEkdDE3NzgxOTQ5NDgkajYwJGwwJGgw) !!
+This project was built for the Software Systems Student Societies flagship Hackathon, [XHacks 2026](https://systemshacks-2026-xhacks.devpost.com/?_gl=1*kwn7ro*_gcl_au*OTMyODIxMjI0LjE3NzgxOTQ2NTE.*_ga*MTg4MjAyMTY4NS4xNzc4MTk0NjUx*_ga_0YHJK3Y10M*czE3NzgxOTQ2NTEkbzEkZzEkdDE3NzgxOTQ5NDgkajYwJGwwJGgw) !!
 
 ## Getting started
 
